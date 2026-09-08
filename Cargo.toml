@@ -1,0 +1,20 @@
+[package]
+name = "strip-subs"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-2.0-or-later"
+
+[features]
+default = ["bundle"]
+# Embeds mkvmerge.exe + ffprobe.exe from tools/ into the executable.
+bundle = []
+
+[dependencies]
+eframe = { version = "0.36", default-features = true }
+rfd = { version = "0.17" }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+opt-level = "s"
